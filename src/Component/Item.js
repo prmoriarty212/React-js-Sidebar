@@ -1,17 +1,43 @@
 import { DashboardRounded } from '@material-ui/icons'
 import React from 'react'
 import './Item.css'
+import {motion} from 'framer-motion'
 
 function Item({icon, name}) {
+
+  const subheading = {
+    true: {
+      opacity: 1
+    },
+    false: {
+      opacity: 0,
+      display: 'none'
+    }
+  }
+
   return (
-    <div className='item'>
-        <div className='icon'>
+    <motion.div className='item'
+    whileHover={{
+      backgroundColor: "rgba(255, 255, 255, 0.3)",
+      boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+      backdropFilter: "blur(5.5px)",
+      WebkitBackdropFilter: "blur(5.5px)",
+      border: "1px solid rgba( 255, 255, 255, 0.18 )",
+      cursor: 'pointer'
+    }}
+    transition={{
+      type: 'none', duration: 0.1
+    }}
+    >
+        <motion.div className='icon'>
             {icon}
-        </div>
-        <span>
+        </motion.div>
+        <motion.span
+        variants={subheading}
+        >
             {name}
-        </span>
-    </div>
+        </motion.span>
+    </motion.div>
   )
 }
 
